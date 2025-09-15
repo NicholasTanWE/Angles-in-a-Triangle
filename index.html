@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle Angles Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Triangle Angles Explorer</h1>
+        <div class="controls">
+            <label>Angle 1: <input type="number" id="angle1" min="1" max="178" value="60">°</label>
+            <label>Angle 2: <input type="number" id="angle2" min="1" max="178" value="60">°</label>
+            <label>Angle 3: <input type="text" id="angle3" readonly>°</label>
+            <button id="generate">Generate Triangles</button>
+            <button id="randomize">Randomize Angles</button>
+        </div>
+        <div class="prompt">Align the 3 triangles on a line to form 180 degrees.</div>
+        <div class="canvas-wrapper">
+            <svg id="triangles-canvas" width="800" height="400"></svg>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

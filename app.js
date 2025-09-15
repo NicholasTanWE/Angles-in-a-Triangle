@@ -42,24 +42,32 @@ function toRadians(deg) {
 }
 
 function trianglePoints(a, b, c, size=120) {
-    // Law of Sines to get side lengths
-    // a, b, c are angles in degrees
-    // size is the base length (between angle B and C)
+    // a, b, c are angles in degrees at vertices A, B, C respectively
+    // Construct triangle with proper geometry using Law of Sines
     let A = toRadians(a), B = toRadians(b), C = toRadians(c);
-    let sideA = size;
-    let sideB = sideA * Math.sin(B) / Math.sin(A);
-    let sideC = sideA * Math.sin(C) / Math.sin(A);
-    // Place point A at (0,0), B at (sideC,0), C calculated
+    
+    // Use Law of Sines: a/sin(A) = b/sin(B) = c/sin(C)
+    // where a, b, c are side lengths opposite to angles A, B, C
+    // Let's set the base side (opposite to angle A) to 'size'
+    let sideA = size; // side opposite to angle A
+    let sideB = sideA * Math.sin(B) / Math.sin(A); // side opposite to angle B
+    let sideC = sideA * Math.sin(C) / Math.sin(A); // side opposite to angle C
+    
+    // Place vertices: 
+    // - Vertex A (angle a) at origin
+    // - Vertex B (angle b) on positive x-axis at distance sideC from A
+    // - Vertex C (angle c) calculated using angle A and side sideB
     let Ax = 0, Ay = 0;
     let Bx = sideC, By = 0;
-    // Find C
-    let angle_BAC = Math.PI - B;
-    let Cx = sideB * Math.cos(angle_BAC);
-    let Cy = sideB * Math.sin(angle_BAC);
+    
+    // To find C: from A, go distance sideB at angle A from the positive x-axis
+    let Cx = sideB * Math.cos(A);
+    let Cy = sideB * Math.sin(A);
+    
     return [
-        {x: Ax, y: Ay},
-        {x: Bx, y: By},
-        {x: Cx, y: Cy}
+        {x: Ax, y: Ay},  // Vertex A (has angle a)
+        {x: Bx, y: By},  // Vertex B (has angle b)
+        {x: Cx, y: Cy}   // Vertex C (has angle c)
     ];
 }
 
